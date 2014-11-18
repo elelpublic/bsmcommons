@@ -27,25 +27,25 @@ public class BsmStringsTest {
   @Test
   public void testAfter() {
     
-    assertEquals( "national", BsmStrings.after( "International", "Inter" ) );
-    assertNull( BsmStrings.after( "International", "Interview" ) );
-    assertEquals( "national", BsmStrings.after( "national", "" ) );
-    assertNull( BsmStrings.after( "", "abc" ) );
+    assertEquals( "national", Strings.after( "International", "Inter" ) );
+    assertNull( Strings.after( "International", "Interview" ) );
+    assertEquals( "national", Strings.after( "national", "" ) );
+    assertNull( Strings.after( "", "abc" ) );
     
     try {
-      assertEquals( "national", BsmStrings.after( "national", null ) );
+      assertEquals( "national", Strings.after( "national", null ) );
       fail( "Expected NullPointerException" );
     }
     catch( NullPointerException ex ) {}
     
     try {
-      assertEquals( "national", BsmStrings.after( null, "nat" ) );
+      assertEquals( "national", Strings.after( null, "nat" ) );
       fail( "Expected NullPointerException" );
     }
     catch( NullPointerException ex ) {}
 
     try {
-      assertEquals( "national", BsmStrings.after( null, null ) );
+      assertEquals( "national", Strings.after( null, null ) );
       fail( "Expected NullPointerException" );
     }
     catch( NullPointerException ex ) {}

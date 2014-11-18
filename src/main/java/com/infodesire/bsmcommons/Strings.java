@@ -10,7 +10,7 @@ package com.infodesire.bsmcommons;
  * 
  *
  */
-public class BsmStrings {
+public class Strings {
 
 
   /**
