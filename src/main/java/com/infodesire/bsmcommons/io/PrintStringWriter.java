@@ -1,7 +1,7 @@
 // (C) 1998-2015 Information Desire Software GmbH
 // www.infodesire.com
 
-package com.infodesire.bsmcommons;
+package com.infodesire.bsmcommons.io;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

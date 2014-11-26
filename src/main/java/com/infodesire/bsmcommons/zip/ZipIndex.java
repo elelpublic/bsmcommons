@@ -1,7 +1,10 @@
 // (C) 1998-2015 Information Desire Software GmbH
 // www.infodesire.com
 
-package com.infodesire.bsmcommons;
+package com.infodesire.bsmcommons.zip;
+
+import com.infodesire.bsmcommons.file.FilePath;
+import com.infodesire.bsmcommons.file.Index;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,10 +21,10 @@ import java.util.zip.ZipInputStream;
 
 
 /**
- * Extend javas zip functionality to make it easier to use.
+ * The full index of a zip file content
  *
  */
-public class ZipIndex implements Iterable<String> {
+public class ZipIndex implements Index {
   
   
   private boolean hasImplicitFolders = false;
@@ -48,14 +51,14 @@ public class ZipIndex implements Iterable<String> {
   /**
    * Read zip file, create index
    * 
-   * @param in Input stream from a zip file
+   * @param zipFile Zip file
    * @param hasImplicitFolders If true, folders which do no exists in the zip file, but contain files, will be returned as regular folders
    * @param relativePaths If true all files are considered relative to base dir, otherwise the base dir is "/".
    * @throws IOException if an error occured accessing or decoding the zip file 
    * 
    */
-  public ZipIndex( File file, boolean hasImplicitFolders, boolean relativePaths ) throws IOException {
-    this( new FileInputStream( file ), hasImplicitFolders, relativePaths );
+  public ZipIndex( File zipFile, boolean hasImplicitFolders, boolean relativePaths ) throws IOException {
+    this( new FileInputStream( zipFile ), hasImplicitFolders, relativePaths );
   }
   
   
@@ -98,6 +101,11 @@ public class ZipIndex implements Iterable<String> {
   }
 
 
+  public boolean isFile( String path ) {
+    return !isFolder( path );
+  }
+  
+  
   /**
    * @return Number of files and folders
    * 

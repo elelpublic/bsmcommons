@@ -1,7 +1,9 @@
 // (C) 1998-2015 Information Desire Software GmbH
 // www.infodesire.com
 
-package com.infodesire.bsmcommons;
+package com.infodesire.bsmcommons.file;
+
+import com.infodesire.bsmcommons.StringList;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,20 @@
 // (C) 1998-2015 Information Desire Software GmbH
 // www.infodesire.com
 
-package com.infodesire.bsmcommons;
+package com.infodesire.bsmcommons.zip;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.infodesire.bsmcommons.file.FilePath;
+import com.infodesire.bsmcommons.io.Bytes;
+import com.infodesire.bsmcommons.io.Charsets;
+import com.infodesire.bsmcommons.zip.ZipIndex;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,9 +54,9 @@ public class ZipIndexTest {
     zipFile( zipOut, "sub/sub/subsub.markdown", "subsub" );
     zipOut.close();
     
-    ZipIndex index = new ZipIndex( file, true, true );
-    ZipIndex index2 = new ZipIndex( file, false, true );
-    ZipIndex index3 = new ZipIndex( file, true, false );
+    ZipIndex index = new ZipIndex( new FileInputStream( file ), true, true );
+    ZipIndex index2 = new ZipIndex( new FileInputStream( file ), false, true );
+    ZipIndex index3 = new ZipIndex( new FileInputStream( file ), true, false );
     
     assertEquals( 7, index.size() );
     assertEquals( 4, index2.size() );

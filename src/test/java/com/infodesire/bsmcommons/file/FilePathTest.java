@@ -1,9 +1,11 @@
 // (C) 1998-2015 Information Desire Software GmbH
 // www.infodesire.com
 
-package com.infodesire.bsmcommons;
+package com.infodesire.bsmcommons.file;
 
 import static org.junit.Assert.*;
+
+import com.infodesire.bsmcommons.file.FilePath;
 
 import org.junit.After;
 import org.junit.Before;
@@ -59,4 +61,7 @@ public class FilePathTest {
     
   }
 
+
 }
+
+
