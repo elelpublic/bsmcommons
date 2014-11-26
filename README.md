@@ -5,8 +5,8 @@ Things that make the Java life nicer and is not available in Guava or Apache Com
 
 Current Version 0.4
 
-main
-----
+main package
+------------
 
 ### Strings
 
@@ -16,8 +16,8 @@ Cut away prefixes and suffixes simply.
 
 Concatenate and split lists of strings.
 
-file
-----
+Package: file
+-------------
 
 ### Index, FileIndex, ZipIndex
 
@@ -35,8 +35,8 @@ Common utilities for files and directories.
 
 A directory structure abstraction.
 
-io
---
+Package: io
+-----------
 
 ### Bytes
 
@@ -50,8 +50,8 @@ UTF-8
 
 Use Strings when PrintWriters are required.
 
-zip
----
+Package: zip
+------------
 
 ### Zipper
 
