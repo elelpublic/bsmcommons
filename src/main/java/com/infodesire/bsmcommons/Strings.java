@@ -219,6 +219,16 @@ public class Strings {
     }
     
   }
+  
+  
+  /**
+   * @param text Input text
+   * @return String is null or contains only whitespaces
+   * 
+   */
+  public boolean isEmpty( String text ) {
+    return text == null || text.trim().length() == 0;
+  }
 
 
 }
