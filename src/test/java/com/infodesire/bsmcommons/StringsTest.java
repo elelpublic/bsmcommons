@@ -11,7 +11,7 @@ import org.junit.Test;
 
 
 
-public class BsmStringsTest {
+public class StringsTest {
 
 
   @Before
@@ -49,6 +49,20 @@ public class BsmStringsTest {
       fail( "Expected NullPointerException" );
     }
     catch( NullPointerException ex ) {}
+    
+  }
+  
+  
+  @Test
+  public void testIsEmpty() {
+
+    assertTrue( Strings.isEmpty( "" ) );
+    assertTrue( Strings.isEmpty( " " ) );
+    assertTrue( Strings.isEmpty( "  " ) );
+    assertTrue( Strings.isEmpty( "\r" ) );
+    assertTrue( Strings.isEmpty( "\n" ) );
+    assertTrue( Strings.isEmpty( "\t" ) );
+    assertFalse( Strings.isEmpty( "." ) );
     
   }
 

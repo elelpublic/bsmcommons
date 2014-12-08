@@ -15,7 +15,7 @@ apply plugin: 'ivy-publish'
 
 
 group = 'com.infodesire'
-version = '0.4.1'
+version = '0.4.2'
 
 
 // In this section you declare where to find the dependencies of your project

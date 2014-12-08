@@ -226,7 +226,7 @@ public class Strings {
    * @return String is null or contains only whitespaces
    * 
    */
-  public boolean isEmpty( String text ) {
+  public static boolean isEmpty( String text ) {
     return text == null || text.trim().length() == 0;
   }
 
