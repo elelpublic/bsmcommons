@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 
 /**
@@ -21,6 +25,8 @@ public class Files {
    * 
    */
   public static final FileFilter DIRS = new FileFilter() {
+
+
     @Override
     public boolean accept( File pathname ) {
       return pathname.isDirectory();
@@ -33,13 +39,15 @@ public class Files {
    * 
    */
   public static final FileFilter FILES = new FileFilter() {
+
+
     @Override
     public boolean accept( File pathname ) {
       return pathname.isFile();
     }
   };
-  
-  
+
+
   /**
    * Create a temporary directory
    * 
@@ -136,5 +144,50 @@ public class Files {
     file.setLastModified( timestamp );
   }
 
+
+  /**
+   * Test if a file or jar url points to a directory
+   * 
+   * @param url Tested url
+   * @return Points to a directory
+   * @throws IOException
+   * 
+   */
+  public static boolean isDirectory( URL url ) throws IOException {
+    
+    String protocol = url.getProtocol();
+    
+    if( protocol.equals( "file" ) ) {
+      return new File( url.getFile() ).isDirectory();
+    }
+    
+    if( protocol.equals( "jar" ) ) {
+      String file = url.getFile();
+      int bangIndex = file.indexOf( '!' );
+      String jarPath = file.substring( bangIndex + 2 );
+      file = new URL( file.substring( 0, bangIndex ) ).getFile();
+      ZipFile zip = new ZipFile( file );
+      try {
+        ZipEntry entry = zip.getEntry( jarPath );
+        boolean isDirectory = entry.isDirectory();
+        if( !isDirectory ) {
+          InputStream input = zip.getInputStream( entry );
+          isDirectory = input == null;
+          if( input != null )
+            input.close();
+        }
+        return isDirectory;
+      }
+      finally {
+        try {
+          zip.close();
+        }
+        catch( Exception ex ) {}
+      }
+    }
+    
+    return false;
+    
+  }
 
 }

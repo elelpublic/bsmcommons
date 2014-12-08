@@ -57,6 +57,9 @@ public class FileDirectory implements Directory {
     return new FileIndex( baseDir );
   }
 
+  public String toString() {
+    return baseDir.getAbsolutePath();
+  }
 
 }
 

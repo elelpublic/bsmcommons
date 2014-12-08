@@ -3,6 +3,7 @@
 
 package com.infodesire.bsmcommons.zip;
 
+import com.infodesire.bsmcommons.Strings;
 import com.infodesire.bsmcommons.file.Directory;
 import com.infodesire.bsmcommons.file.FileDirectory;
 import com.infodesire.bsmcommons.file.Index;
@@ -98,9 +99,14 @@ public class Zipper {
     for( Directory directory : directories ) {
       Index index = directory.createIndex();
       for( String entryName : index ) {
-        if( index.isFile( entryName ) ) {
-          InputStream content = directory.getData( entryName );
-          zipFile( zipOut, entryName, content );
+        if( !Strings.isEmpty( entryName ) ) {
+          if( index.isFile( entryName ) ) {
+            InputStream content = directory.getData( entryName );
+            zipFile( zipOut, entryName, content );
+          }
+          else {
+            zipOut.putNextEntry( new ZipEntry( entryName + "/" ) );
+          }
         }
       }
     }
