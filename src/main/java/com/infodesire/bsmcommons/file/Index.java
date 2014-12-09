@@ -3,6 +3,8 @@
 
 package com.infodesire.bsmcommons.file;
 
+import java.io.PrintWriter;
+
 
 /**
  * Deep recursive index of all files and folders in a directory
@@ -34,6 +36,14 @@ public interface Index extends Iterable<String> {
    */
   int size();
   
+  
+  /**
+   * Generate full listing
+   * @param out Print target
+   * 
+   */
+  void createListing( PrintWriter out, String lineSeparator );
+
   
 }
 

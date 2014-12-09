@@ -5,11 +5,13 @@ package com.infodesire.bsmcommons.zip;
 
 import com.infodesire.bsmcommons.file.FilePath;
 import com.infodesire.bsmcommons.file.Index;
+import com.infodesire.bsmcommons.io.PrintStringWriter;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -179,6 +181,31 @@ public class ZipIndex implements Index {
       }
     } 
     return result;
+  }
+  
+  
+  /**
+   * @return Full listing
+   * 
+   */
+  public String createListing() {
+    PrintStringWriter s = new PrintStringWriter();
+    createListing( s, "\n" );
+    return s.toString();
+  }
+  
+  
+  /**
+   * Generate full listing
+   * @param out Print target
+   * 
+   */
+  public void createListing( PrintWriter out, String lineSeparator ) {
+    String sep = "";
+    for( Map.Entry<FilePath, Boolean> entry : index.entrySet() ) {
+      out.println( sep + entry.getKey() + ( entry.getValue() ? "/" : "" ) );
+      sep = lineSeparator;
+    }
   }
   
   

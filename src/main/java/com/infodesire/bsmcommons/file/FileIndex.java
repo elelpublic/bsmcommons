@@ -3,7 +3,10 @@
 
 package com.infodesire.bsmcommons.file;
 
+import com.infodesire.bsmcommons.io.PrintStringWriter;
+
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -70,6 +73,31 @@ public class FileIndex implements Index {
   @Override
   public int size() {
     return getIndex().size();
+  }
+
+
+  /**
+   * @return Full listing
+   * 
+   */
+  public String createListing() {
+    PrintStringWriter s = new PrintStringWriter();
+    createListing( s, "\n" );
+    return s.toString();
+  }
+  
+  
+  /**
+   * Generate full listing
+   * @param out Print target
+   * 
+   */
+  public void createListing( PrintWriter out, String lineSeparator ) {
+    String sep = "";
+    for( String path : index ) {
+      out.print( sep + path + ( !isFile( path ) ? "/" : "" ) );
+      sep = lineSeparator;
+    }
   }
 
 
