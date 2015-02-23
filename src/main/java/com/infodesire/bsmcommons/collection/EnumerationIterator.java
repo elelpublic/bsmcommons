@@ -29,4 +29,8 @@ public class EnumerationIterator<T> implements Iterator<T> {
     return enumeration.nextElement();
   }
 
+  public void remove() {
+    throw new UnsupportedOperationException("remove");
+  }
+
 }
