@@ -16,6 +16,19 @@ Cut away prefixes and suffixes simply.
 
 Concatenate and split lists of strings.
 
+
+Package: collection
+-------------------
+
+### Concat
+
+Concatenate strings.
+
+### Iterables, EnumerationIterable, EnumerationIterator
+
+Iterate or create iterables from any type of source collection.
+
+
 Package: file
 -------------
 
@@ -49,6 +62,10 @@ UTF-8
 ### PrintStringWriter
 
 Use Strings when PrintWriters are required.
+
+### Writers
+
+Create PrintWriter from any kind of writer and keep instance if possible.
 
 Package: zip
 ------------

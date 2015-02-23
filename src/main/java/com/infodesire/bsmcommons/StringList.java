@@ -3,6 +3,8 @@
 
 package com.infodesire.bsmcommons;
 
+import com.infodesire.bsmcommons.collection.Concat;
+
 import java.util.ArrayList;
 
 
@@ -21,12 +23,12 @@ public class StringList extends ArrayList<CharSequence> {
 	
 	
 	public static String toString( Iterable<?> entries, String separator ) {
-	  return new StringList( entries, separator ).toString();
+	  return Concat.concat( entries, separator );
 	}
 
 
 	public static String toString( Object[] entries, String separator ) {
-	  return new StringList( entries, separator ).toString();
+	  return Concat.concat( entries, separator );
 	}
 	
 	
