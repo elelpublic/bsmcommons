@@ -13,14 +13,12 @@ import java.io.StringWriter;
  */
 public class PrintStringWriter extends PrintWriter {
 
-  private static StringWriter stringWriter;
-
   public PrintStringWriter() {
-    super( stringWriter = new StringWriter() );
+    super( new StringWriter() );
   }
-  
+
   public String toString() {
-    return stringWriter.toString();
+    return ( (StringWriter) out ).toString();
   }
 
 }
